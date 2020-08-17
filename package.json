@@ -1,0 +1,19 @@
+{
+  "name": "porpoise-router",
+  "version": "1.0.0",
+  "description": "An powerful framework-agnostic routing solution.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && webpack"
+  },
+  "author": "raghav-misra",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "path-to-regexp": "^6.1.0"
+  }
+}
