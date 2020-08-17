@@ -1,7 +1,4 @@
-export interface IRouteDescriptor {
-    element: string,
-    props?: Record<string, string>
-}
+import { IRouteDescriptor } from "../internals/api.js";
 
 export class PorpoiseRouter extends HTMLElement {
     routes: Record<string, string | IRouteDescriptor> = Object.create(null);
