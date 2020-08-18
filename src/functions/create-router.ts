@@ -1,8 +1,8 @@
-import { PorpoiseRouter } from "../components/p-router.js";
+import { IPorpoiseRouter } from "../components/p-router.js";
 import { IRouteDescriptor } from "../internals/api.js";
 
 export function createRouter(target: string, routes: Record<string, string | IRouteDescriptor>) {
-    const routerNode = document.querySelector(`p-router[name="${target}"]`) as PorpoiseRouter;
+    const routerNode = document.querySelector(`p-router[name="${target}"]`) as IPorpoiseRouter;
 
     if (routerNode) {
         routerNode.configure(routes);
