@@ -28,7 +28,7 @@ class PorpoiseLink extends HTMLElement {
         const target = (this.getAttribute("href") as string).trim();
 
         // Change page:
-        history.pushState(null, target, target);
+        history.pushState(null, "", target);
 
         // Trigger <p-router> dependencies:
         changeDependencies.forEach(dependency => dependency());

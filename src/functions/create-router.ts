@@ -1,11 +1,21 @@
 import { IPorpoiseRouter } from "../components/p-router.js";
-import { IRouteDescriptor } from "../internals/api.js";
+import { IRouteDescriptor, IRouterAPI } from "../internals/api.js";
 
-export function createRouter(target: string, routes: IRouteDescriptor[]) {
-    const routerNode = document.querySelector(`p-router[name="${target}"]`) as IPorpoiseRouter;
+export function createRouter(routes: IRouteDescriptor[]): IRouterAPI | void {
+    const routerNode = document.querySelector(`p-router`) as IPorpoiseRouter;
 
     if (routerNode) {
         routerNode.configure(routes);
     }
-    else console.error(`Could not find <p-router name="${target}"></p-router> in the DOM.`);
+    else return console.error(`Could not find <p-router></p-router> in the DOM.`);
+
+    return {
+        push(newPath: string) {
+            history.pushState(null, "", newPath);
+            routerNode.changeView();
+        },
+        get current() {
+            return routerNode["[[current]]"]
+        }
+    };
 }

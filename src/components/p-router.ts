@@ -1,10 +1,12 @@
 import { IRouteDescriptor, ICurrentRoute } from "../internals/api.js";
 import { addPageWatcher } from "./p-link.js";
-import { matchPath } from "../internals/match-path.js";
+import { matchRoute } from "../internals/path-parser.js";
 
 export interface IPorpoiseRouter extends HTMLElement {
     routes: IRouteDescriptor[];
     configure(routes: IRouteDescriptor[]): void;
+    changeView(): void;
+    "[[current]]": ICurrentRoute | null;
 }
 
 class PorpoiseRouter extends HTMLElement implements IPorpoiseRouter {
@@ -29,7 +31,7 @@ class PorpoiseRouter extends HTMLElement implements IPorpoiseRouter {
         for (const n in this.routes) {
             const route = this.routes[n];
             
-            const { doesMatch, params } = matchPath(route.path, newPath);
+            const { doesMatch, params } = matchRoute(route.path, newPath);
 
             // Success:
             if (doesMatch) {
