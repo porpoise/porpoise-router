@@ -5,7 +5,7 @@ export interface ICurrentRoute {
 
 export interface IRouteDescriptor {
     path: string
-    element: string,
+    element: string | ((currentRoute: ICurrentRoute) => Node),
 }
 
 export interface IRouterAPI {

@@ -38,7 +38,23 @@ class PorpoiseRouter extends HTMLElement implements IPorpoiseRouter {
                 // Set current route data:
                 this["[[current]]"] = { path: newPath, params };
                 this.textContent = "";
-                this.appendChild(document.createElement(route.element));
+                
+                // Render the element:
+                if (typeof route.element === "string") {
+                    this.appendChild(document.createElement(route.element));
+                }
+
+                // Dynamically create element:
+                else if (typeof route.element === "function") {
+                    const el = route.element(this["[[current]]"]);
+                    this.appendChild(el);
+                }
+
+                // Incorrect element type:
+                else {
+                    this.textContent = "The 'element' property MUST be a string, or a function that returns a Node";
+                }
+
                 return;
             }
         }

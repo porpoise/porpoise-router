@@ -14,8 +14,7 @@ export function createRouter(routes: IRouteDescriptor[]): IRouterAPI | void {
             history.pushState(null, "", newPath);
             routerNode.changeView();
         },
-        get current() {
-            return routerNode["[[current]]"]
+        get current() {            return routerNode["[[current]]"];
         }
     };
 }
