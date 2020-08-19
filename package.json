@@ -2,9 +2,15 @@
   "name": "porpoise-router",
   "version": "1.0.0",
   "description": "An powerful framework-agnostic routing solution.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
   "scripts": {
     "build": "tsc && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/porpoise/porpoise-router"
   },
   "author": "raghav-misra",
   "license": "MIT",
